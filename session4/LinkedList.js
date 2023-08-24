@@ -1,62 +1,3 @@
-// let numbers = [3, 6, 4, 2, 1, 5];
-
-// // console.log(numbers);
-
-// // console.log(numbers[2]);
-
-// numbers[4] = 10;
-
-// console.log(numbers);
-
-// let word = 'apple';
-
-// console.log(word);
-// console.log(word[4]);
-
-// strings are immutable - non changeables
-
-// word[1] = 'm';
-
-// @index 1 => 'm'
-// let index = 1;
-// let char = 'n';
-
-// word = word.slice(0, index) + char + word.slice(index + 1,);
-
-// index = 2;
-// char = 'k';
-
-// word = word.slice(0, index) + char + word.slice(index + 1,);
-
-// // console.log(word.split(''));
-// console.log(word.toUpperCase());
-
-// let numbers = [1, 2, 3, 4, 5];
-// let numbers = new Array(1, 2, 3, 4, 5);
-
-// numbers.push(6);
-// numbers.pop();
-// numbers.pop();
-
-// numbers.unshift(10);
-// numbers.unshift(12);
-// numbers.shift();
-// numbers.shift();
-// numbers.shift();
-
-// numbers.splice(2, 0, 6);
-// numbers.splice(1, 1);
-
-// console.log(numbers);
-
-// let word = 'apple';
-// let word = new String('apple');
-
-// console.log(word.toUpperCase());
-
-// built-in data types: arrays, strings, objects
-// abstract data types: linked list, stack
-
 class Node {
     constructor(data) {
         this.data = data;
@@ -116,6 +57,43 @@ class LinkedList {
             tail.next = null;
         }
     }
+
+    insertAtHead(data) {
+        let newNode = new Node(data);
+
+        newNode.next = this.head;
+
+        this.head = newNode;
+    }
+
+    deleteAtHead() {
+        if (this.head != null) {
+            this.head = this.head.next;
+        }
+    }
+
+    // return the number of nodes in the linked list
+    length() {
+        // return this.toArray().length;
+        // let nodes = [];
+        // let thead = this.head;
+
+        // while (thead != null) {
+        //     nodes.push(thead.data);
+        //     thead = thead.next;
+        // }
+
+        // return nodes.length;
+        let nodes = 0;
+        let thead = this.head;
+
+        while (thead != null) {
+            nodes++;
+            thead = thead.next;
+        }
+
+        return nodes;
+    }
 }
 
 let list = new LinkedList();
@@ -130,7 +108,22 @@ list.insertAtTail(11);
 list.deleteAtTail();
 list.deleteAtTail();
 
+list.insertAtHead(2);
+list.insertAtHead(10);
+list.deleteAtHead();
+
+list.insertAtTail('krish');
+list.insertAtTail(true);
+
+list.insertAtHead([1, 2, 3]);
+
+list.insertAtTail({
+    name: 'sathish',
+    age: 30
+});
+
 console.log(list.toArray());
+console.log('length: ', list.length());
 
 /*
     list = LinkedList {
